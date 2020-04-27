@@ -1,4 +1,4 @@
-package com.sidekick.pixogram.discoveryserver;
+package com.cts.onlineordering.discoveryserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
