@@ -17,17 +17,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
-	
-	// DriverManagerDataSource
-	// ComboPooled DataSource
-	// HikariPool DataSource
+
 	@Autowired
 	private DataSource dataSource;
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
-		/********** JDBC Authentication ***************/
 
 		auth.jdbcAuthentication().dataSource(dataSource);
 
