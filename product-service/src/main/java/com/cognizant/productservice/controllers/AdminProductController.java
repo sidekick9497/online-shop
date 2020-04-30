@@ -1,10 +1,19 @@
 package com.cognizant.productservice.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class AdminProductController {
+    @Autowired
+    private Environment env;
+    @GetMapping("/testServer")
+    public String testConfigServer()
+    {
+        return env.getProperty("msg","no value");
+    }
     @PostMapping("/productAdd")
     public ResponseEntity<Boolean> addProduct()//add Product parameter
     {

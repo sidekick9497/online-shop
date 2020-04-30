@@ -1,0 +1,22 @@
+package com.cts.onlineordering.cartservice.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+
+public class CartDataModel {
+	
+	private Integer user_id;
+	private Integer item_id;
+	private Integer item_quantity;
+	
+
+}
