@@ -6,14 +6,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class AdminProductController {
+public class AdminProductController implements  IAdminProductController {
     @Autowired
     private Environment env;
+    @Override
     @GetMapping("/testServer")
     public String testConfigServer()
     {
         return env.getProperty("msg","no value");
     }
+
     @PostMapping("/productAdd")
     public ResponseEntity<Boolean> addProduct()//add Product parameter
     {
