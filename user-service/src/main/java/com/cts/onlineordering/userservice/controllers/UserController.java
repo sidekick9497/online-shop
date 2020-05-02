@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class UserController {
+public class UserController implements IUserController {
 
     @Autowired
     private Environment env;
@@ -21,14 +21,14 @@ public class UserController {
     @PostMapping("/signup")
     public ResponseEntity<Boolean> signupUser()
     {
-        // user sign up logic here
+        // user sign-up logic here
         return null;
     }
 
     @PostMapping("/login")
     public  ResponseEntity<Boolean> loginUser()
     {
-        // user log in user here
+        // user log-in user here
         return null;
     }
 

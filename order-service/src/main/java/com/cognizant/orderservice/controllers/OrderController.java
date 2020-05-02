@@ -4,13 +4,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class OrderController {
+public class OrderController implements IOrderController {
 
     @GetMapping("orders/:id")
     public ResponseEntity<Object> getOneOrder() //add orders object
     {
         return  null;
     }
+
+    @Override
+    public String testConfigServer() {
+        return null;
+    }
+
     @GetMapping("orders")
     public ResponseEntity<Object> getAllOrders()//add ordersObject
     {
