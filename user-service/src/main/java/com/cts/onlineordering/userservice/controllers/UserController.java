@@ -21,14 +21,14 @@ public class UserController implements IUserController {
     @PostMapping("/signup")
     public ResponseEntity<Boolean> signupUser()
     {
-        // user sign up logic here
+        // user sign-up logic here
         return null;
     }
 
     @PostMapping("/login")
     public  ResponseEntity<Boolean> loginUser()
     {
-        // user log in user here
+        // user log-in user here
         return null;
     }
 
