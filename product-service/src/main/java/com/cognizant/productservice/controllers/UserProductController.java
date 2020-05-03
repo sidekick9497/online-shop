@@ -39,9 +39,7 @@ public class UserProductController {
     @GetMapping("/product/view")
     public ResponseEntity<List<ProductModel>> viewAllProducts()
     {
-    	List<ProductModel> products = productService.getAllProducts();
-    	ResponseEntity<List<ProductModel>> response = new ResponseEntity<List<ProductModel>>(products, HttpStatus.OK);
-        return response;
+    	
     }
     
   

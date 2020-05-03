@@ -7,6 +7,6 @@ import com.cognizant.productservice.model.ProductModel;
 public interface ProductService {
 
 	List<ProductModel> getAllProducts();
-	
+	ProductModel getProductDetails(Integer productId);
 
 }

@@ -22,21 +22,13 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<ProductModel> getAllProducts() {
+		return null;
+	}
 
-		List<ProductModel> allProducts = new ArrayList<ProductModel>();
-		Iterable<Product> allProd = productrepo.findAll();
-		Iterator<Product> itr = allProd.iterator();
-		while (itr.hasNext()) {
-			Product products = (Product) itr.next();
-			Category category = products.getAllCategory();
-			CategoryModel categories = new CategoryModel(category.getCategory_id(), category.getCategory_name(),
-					category.getCategory_brief());
-			ProductModel productm = new ProductModel(products.getItem_id(), products.getItem_name(),
-					products.getItem_price(), products.getItem_description(), categories);
-			allProducts.add(productm);
-		}
-		System.out.println(allProducts);
-		return allProducts;
+	@Override
+	public ProductModel getProductDetails(Integer productId) {
+		
+		return null;
 	}
 
 	
