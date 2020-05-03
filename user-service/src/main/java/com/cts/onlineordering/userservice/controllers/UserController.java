@@ -1,5 +1,7 @@
 package com.cts.onlineordering.userservice.controllers;
 
+
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
@@ -8,20 +10,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
+
 public class UserController implements IUserController {
 
     @Autowired
     private Environment env;
+    
+    private org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
+    
+    
     @GetMapping("/testServer")
     public String testConfigServer()
     {
+    	
         return env.getProperty("msg","no value");
+       
     }
     @PostMapping("/signup")
     public ResponseEntity<Boolean> signupUser()
     {
         // user sign-up logic here
+    	 
         return null;
     }
 
