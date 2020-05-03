@@ -5,9 +5,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,14 +20,14 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 @ToString
 @Entity
 @Table(name="item_table")
-public class Item {
+public class Product {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
 	@Column
 	private Integer item_id;
 	@Column
@@ -33,6 +36,9 @@ public class Item {
 	private Integer item_price;
 	@Column
 	private String item_description;
-	@Column
-	private Integer category_id;
+	@ManyToOne
+	@JoinColumn(name = "category_id")
+	private Category  allCategory;
+
+	
 }
