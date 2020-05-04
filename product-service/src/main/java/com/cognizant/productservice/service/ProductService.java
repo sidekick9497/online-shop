@@ -9,7 +9,6 @@ public interface ProductService {
 
 	List<ProductModel> getAllProducts();
 	ProductModel getProductDetails(Integer productId);
-	Product findProductById(Integer id);
 	boolean addProduct(Product product);
 	boolean updateProduct(Product product);
 	boolean deleteProduct(Integer id);

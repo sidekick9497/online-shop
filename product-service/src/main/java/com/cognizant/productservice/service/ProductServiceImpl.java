@@ -22,17 +22,12 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<ProductModel> getAllProducts() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ProductModel getProductDetails(Integer productId) {
-		
-		return null;
-	}
-
-	@Override
-	public Product findProductById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
