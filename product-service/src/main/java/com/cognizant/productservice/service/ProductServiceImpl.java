@@ -31,6 +31,30 @@ public class ProductServiceImpl implements ProductService {
 		return null;
 	}
 
+	@Override
+	public Product findProductById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean addProduct(Product product) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updateProduct(Product product) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean deleteProduct(Integer id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	
 
 }
