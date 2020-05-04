@@ -1,5 +1,6 @@
 package com.cognizant.productservice.controllers;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
@@ -9,8 +10,12 @@ import org.springframework.web.bind.annotation.*;
 public class AdminProductController implements  IAdminProductController {
     @Autowired
     private Environment env;
+    private org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Override
     @GetMapping("/testServer")
+    
+    
     public String testConfigServer()
     {
         return env.getProperty("msg","no value");

@@ -1,14 +1,21 @@
 package com.cognizant.orderservice.controllers;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
+
 public class OrderController implements IOrderController {
+	private org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
+    
 
     @GetMapping("orders/:id")
     public ResponseEntity<Object> getOneOrder() //add orders object
     {
+   
         return  null;
     }
 
