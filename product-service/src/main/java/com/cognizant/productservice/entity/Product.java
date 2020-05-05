@@ -37,7 +37,7 @@ public class Product {
 	@Column
 	private String item_description;
 	@ManyToOne
-	@JoinColumn(name = "category_id")
+	@JoinColumn(name = "category_id",insertable = true,updatable = true)
 	private Category  allCategory;
 
 	

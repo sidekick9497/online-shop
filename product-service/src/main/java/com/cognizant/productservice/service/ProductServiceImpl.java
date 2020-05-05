@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
+import com.cognizant.productservice.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,8 @@ public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	ProductRepository productrepo;
+	@Autowired
+	CategoryRepository categoryRepository;
 
 	@Override
 	public List<ProductModel> getAllProducts() {
@@ -61,12 +64,15 @@ public class ProductServiceImpl implements ProductService {
 		CategoryModel category = product.getAllCategory();
 		Category allCategory = new Category(category.getCategory_id(),category.getCategory_name(),category.getCategory_brief(), null);
 		Product prod = new Product();
+		Category savedcategory = categoryRepository.saveAndFlush(allCategory);
 		//prod.setItem_id(0);
 		prod.setItem_name(product.getItem_name());
 		prod.setItem_price(product.getItem_price());
 		prod.setItem_description(product.getItem_description());
-		prod.setAllCategory(allCategory);
+		prod.setAllCategory(savedcategory);
 		prod = productrepo.save(prod);
+		categoryRepository.save(allCategory);
+
 		//product.setItem_id(prod.getItem_id());
 		return true;
 		
