@@ -54,23 +54,23 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public ProductModel addProduct(ProductModel product) {
+	public boolean addProduct(ProductModel product) {
 		CategoryModel category = product.getAllCategory();
 		Category allCategory = new Category(category.getCategory_id(),category.getCategory_name(),category.getCategory_brief(), null);
 		Product prod = new Product();
-		prod.setItem_id(0);
+		//prod.setItem_id(0);
 		prod.setItem_name(product.getItem_name());
 		prod.setItem_price(product.getItem_price());
 		prod.setItem_description(product.getItem_description());
 		prod.setAllCategory(allCategory);
-		prod = productrepo.saveAndFlush(prod);
-		product.setItem_id(prod.getItem_id());
-		return product;
+		prod = productrepo.save(prod);
+		//product.setItem_id(prod.getItem_id());
+		return true;
 		
 	}
 
 	@Override
-	public void updateProduct(Product product) {
+	public boolean updateProduct(ProductModel product) {
 		// TODO Auto-generated method stub
 		Product prod = new Product();
         prod.setItem_id(product.getItem_id());
@@ -78,14 +78,15 @@ public class ProductServiceImpl implements ProductService {
 		prod.setItem_price(product.getItem_price());
 		prod.setItem_description(product.getItem_description());
 	    this.productrepo.save(prod);
-		
+		return  true;
 	}
 
 	@Override
 	public boolean deleteProduct(Integer id) {
 		// TODO Auto-generated method stub
-		Product prod=new Product();
-		this.productrepo.delete(prod);
+		/*Product prod=new Product();
+		this.productrepo.delete(prod);*/
+		this.productrepo.deleteById(id);
 		return true;
 	}
 
