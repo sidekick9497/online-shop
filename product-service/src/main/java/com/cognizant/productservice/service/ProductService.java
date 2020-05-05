@@ -10,7 +10,7 @@ public interface ProductService {
 	List<ProductModel> getAllProducts();
 	ProductModel getProductDetails(Integer productId);
 	ProductModel addProduct(ProductModel product);
-	boolean updateProduct(Product product);
+	public void updateProduct(Product product);
 	boolean deleteProduct(Integer id);
 }
 

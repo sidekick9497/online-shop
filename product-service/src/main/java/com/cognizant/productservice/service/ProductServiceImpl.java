@@ -70,15 +70,23 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public boolean updateProduct(Product product) {
+	public void updateProduct(Product product) {
 		// TODO Auto-generated method stub
-		return false;
+		Product prod = new Product();
+        prod.setItem_id(product.getItem_id());
+		prod.setItem_name(product.getItem_name());
+		prod.setItem_price(product.getItem_price());
+		prod.setItem_description(product.getItem_description());
+	    this.productrepo.save(prod);
+		
 	}
 
 	@Override
 	public boolean deleteProduct(Integer id) {
 		// TODO Auto-generated method stub
-		return false;
+		Product prod=new Product();
+		this.productrepo.delete(prod);
+		return true;
 	}
 
 	
