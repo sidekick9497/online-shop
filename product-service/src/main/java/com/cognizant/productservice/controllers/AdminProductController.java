@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/admin")
+@RestController
+@RequestMapping("/admin")
 public class AdminProductController implements  IAdminProductController {
     @Autowired
     private Environment env;
@@ -36,7 +37,7 @@ public class AdminProductController implements  IAdminProductController {
         ResponseEntity<Boolean> response = new ResponseEntity<>(true, HttpStatus.OK);
         return  response;
     }
-    @GetMapping("/product/:id")
+    @GetMapping("/product/{id}")
     public  ResponseEntity<ProductModel> getProduct(@PathVariable Integer id)
     {
         logger.info("request received to getProduct");
@@ -53,7 +54,7 @@ public class AdminProductController implements  IAdminProductController {
         ResponseEntity<Boolean> response = new ResponseEntity<>(true,HttpStatus.OK);
         return response;
     }
-    @DeleteMapping("/product/:id")
+    @DeleteMapping("/product/{id}")
     public ResponseEntity<Boolean> deleteProduct(@PathVariable Integer id)
     {
         logger.info("request received to deleteProduct of Id " + id);

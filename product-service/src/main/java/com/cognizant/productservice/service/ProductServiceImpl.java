@@ -29,7 +29,10 @@ public class ProductServiceImpl implements ProductService {
 		{
 			Product Products = (Product) itr.next();
 			Category category = Products.getAllCategory();
-			CategoryModel  categories = new CategoryModel(category.getCategory_id(),category.getCategory_name(),category.getCategory_brief());
+			CategoryModel categories = null;
+			if(category!= null) {
+				 categories = new CategoryModel(category.getCategory_id(), category.getCategory_name(), category.getCategory_brief());
+			}
 			ProductModel Prod = new ProductModel(Products.getItem_id(),Products.getItem_name(),Products.getItem_price(),Products.getItem_description(), categories);
 			allProd.add(Prod);
 		}
