@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2020-05-06 08:59:43 [restartedMain] INFO  o.s.c.c.c.ConfigServicePropertySourceLocator - Fetching config from server at : http://localhost:8080
 2020-05-06 08:59:45 [restartedMain] INFO  o.s.c.c.c.ConfigServicePropertySourceLocator - Located environment: name=product-service, profiles=[development], label=null, version=b828bf606d39d7e1bbf48adcd78f5ce277dd3bfd, state=null
 2020-05-06 08:59:45 [restartedMain] INFO  o.s.c.b.c.PropertySourceBootstrapConfiguration - Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/sidekick9497/spring_boot_config_files.git/product-service-development.properties'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/sidekick9497/spring_boot_config_files.git/product-service.properties'}]
@@ -2226,3 +2227,11 @@ org.springframework.dao.EmptyResultDataAccessException: No class com.cognizant.p
 2020-05-06 14:07:28 [restartedMain] INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8282
 2020-05-06 14:07:28 [restartedMain] INFO  c.c.p.ProductServiceApplication - Started ProductServiceApplication in 9.0 seconds (JVM running for 8540.862)
 2020-05-06 14:07:28 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+=======
+2020-05-06 00:02:43 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2020-05-06 00:07:44 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2020-05-06 00:12:45 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2020-05-06 00:17:45 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2020-05-06 00:22:45 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2020-05-06 00:27:45 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+>>>>>>> 9745669c07b139c31b85816ff336e9100ee96d26
