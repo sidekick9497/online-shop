@@ -20,4 +20,5 @@ public class CategoryModel {
 	private String category_brief;
 	
 	
+	
 }
