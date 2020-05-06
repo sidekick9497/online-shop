@@ -14,7 +14,7 @@ public class SwaggerConfig {
     public Docket productApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.cognizant.userservice.controllers"))
+                .apis(RequestHandlerSelectors.basePackage("com.cts.onlineordering.userservice.controllers"))
                 .build();
     }
 }

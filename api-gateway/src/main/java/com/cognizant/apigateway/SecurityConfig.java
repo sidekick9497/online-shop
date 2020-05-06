@@ -1,4 +1,4 @@
-package com.sidekick.pixogram.apigateway;
+package com.cognizant.apigateway;
 
 
 

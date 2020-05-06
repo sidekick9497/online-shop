@@ -1,4 +1,4 @@
-package com.sidekick.pixogram.apigateway;
+package com.cognizant.apigateway;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

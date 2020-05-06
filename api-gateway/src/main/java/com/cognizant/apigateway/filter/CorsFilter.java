@@ -1,4 +1,4 @@
-package com.sidekick.pixogram.apigateway.filter;
+package com.cognizant.apigateway.filter;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package com.sidekick.pixogram.apigateway;
+package com.cognizant.apigateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
