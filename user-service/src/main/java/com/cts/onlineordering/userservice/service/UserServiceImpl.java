@@ -24,8 +24,14 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public UserModel addUser(UserModel userModel) {
-				
-		return null;
+		UserEntity userEntity=new UserEntity();
+		userEntity.setUserId(0);
+		userEntity.setUserPassword(userModel.getUserPassword());
+		userEntity.setUserName(userModel.getUserName());
+		userEntity.setUserMobile(userModel.getUserMobile());
+		userEntity.setUserRole(userModel.getUserRole());
+		userEntity = user.save(userEntity);
+		return userModel;
 	}
 
 }
