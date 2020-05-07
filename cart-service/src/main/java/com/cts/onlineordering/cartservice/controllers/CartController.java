@@ -16,14 +16,15 @@ public class CartController {
 
     @GetMapping("/cart/items")
     public ResponseEntity<CartModel> getCartItems()
-    {
-        return null;
+    {	        cartService.getAllProducts();
+	return null;
+        
     }
 
     @PostMapping("/cart/addItems")
-    public ResponseEntity<Boolean> addCartItem(/*@RequestBody CartItem item*/)
+    public ResponseEntity<Boolean> addCartItem(@RequestBody CartModel item)
     {
-        //cartService.addProduct(item);
+        cartService.addProduct(item);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
     @PutMapping("/cart/quantityplus/{itemId}/quantity/{quantity}")

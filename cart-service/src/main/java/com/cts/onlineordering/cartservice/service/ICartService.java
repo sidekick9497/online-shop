@@ -14,7 +14,7 @@ public interface ICartService {
 	public void addProduct(CartModel product);
 	public void deleteProduct(Integer id);
 	public void increaseQuantity(Integer id, Integer quantity);
-	public void decreaseQuantity(Integer id, Integer quantity);
+	public Boolean decreaseQuantity(Integer id, Integer quantity);
 	
 	
 
