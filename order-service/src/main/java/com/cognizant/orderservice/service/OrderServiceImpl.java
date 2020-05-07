@@ -5,11 +5,14 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 
 import com.cognizant.orderservice.entity.OrderEntity;
 import com.cognizant.orderservice.model.OrderModel;
 import com.cognizant.orderservice.repository.OrderRepository;
 
+@Service
 public class OrderServiceImpl implements OrderService{
 
 	@Autowired
@@ -26,7 +29,7 @@ public class OrderServiceImpl implements OrderService{
 		order.setOrderType(orderModel.getOrderType());
 		
 		order = orderRepo.save(order);
-		orderModel.setOrderId(order.getOrderId());
+//		orderModel.setOrderId(order.getOrderId());
 		
 		return true;
 	}
