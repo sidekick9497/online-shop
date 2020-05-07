@@ -4,9 +4,10 @@ import java.util.List;
 
 
 import com.cts.onlineordering.cartservice.model.CartModel;
+import org.springframework.stereotype.Service;
 
 
-
+@Service
 public interface ICartService {
 	
 	List<CartModel> getAllProducts();
