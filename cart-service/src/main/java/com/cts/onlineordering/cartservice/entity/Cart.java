@@ -27,7 +27,7 @@ import lombok.ToString;
 @Entity
 @Table(name="cart_table")
 
-public abstract class Cart {
+public class Cart {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
