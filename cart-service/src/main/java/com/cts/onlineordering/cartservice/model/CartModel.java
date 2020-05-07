@@ -12,7 +12,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 
-public class CartDataModel {
+public class CartModel {
 	
 	private Integer user_id;
 	private Integer item_id;
