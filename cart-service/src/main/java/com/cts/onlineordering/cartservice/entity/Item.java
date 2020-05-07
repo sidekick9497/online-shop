@@ -42,6 +42,9 @@ public class Item {
 	private Integer item_price;
 	@Column
 	private String item_description;
+	@Column
+	private String item_quantity;
+	
 	@ManyToOne
 	@OneToMany(mappedBy = "allItem")
 	Set<Item> allItems;
