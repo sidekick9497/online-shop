@@ -19,6 +19,6 @@ public class CartModel<Item> {
 	private Integer user_id;
 	private Integer item_id;
 	private Integer item_quantity;
-	private List<Item> ltemlist;
+	private List<ItemModel> ltemlist;
 
 }
