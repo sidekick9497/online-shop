@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name="user_table")
+@Table(name="users")
 
 public class UserEntity {
 	
@@ -18,15 +18,16 @@ public class UserEntity {
 	@Column(name= "user_id")
 	private Integer userId;
 	
-	@Column(name= "user_password")
+	@Column(name= "password")
 	private String userPassword;
-	
-	@Column(name= "user_name")
+	@Column(name="enabled")
+	private Boolean enabled;
+
+	@Column(name= "username")
 	private String userName;
 	
 	@Column(name= "user_mobile")
 	private String userMobile;
 	
-	@Column(name= "user_role")
-	private String userRole;
+
 }
