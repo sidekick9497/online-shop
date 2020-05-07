@@ -32,10 +32,10 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public UserModel addUser(UserModel userModel) {
 		UserEntity userEntity=new UserEntity();
-		userEntity.setUserPassword(userModel.getUserPassword());
+		userEntity.setUserPassword("{noop}" +userModel.getUserPassword());
 		userEntity.setUserName(userModel.getUserName());
 		userEntity.setUserMobile(userModel.getUserMobile());
-		userEntity.setUserRole(userModel.getUserRole());
+		userEntity.setEnabled(true);
 		userEntity = user.save(userEntity);
 		Authorities role = new Authorities(userEntity.getUserName(),"ROLE_USER");
 		authorityRepo.save(role);

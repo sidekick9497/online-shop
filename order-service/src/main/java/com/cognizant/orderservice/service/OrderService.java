@@ -6,7 +6,7 @@ import com.cognizant.orderservice.model.OrderModel;
 
 public interface OrderService {
 	
-	OrderModel addOrder(OrderModel orderModel);
+	boolean addOrder(OrderModel orderModel);
 	
 	List<OrderModel> getUsersOrders(int userId);
 	

@@ -14,16 +14,15 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "authorities")
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Authorities implements Serializable {
 	
 	@Id
 	@Column(insertable = true,length = 100)
-	private String userName;
+	private String username;
 	
 	@Id
 	@Column(insertable = true,length = 100)
