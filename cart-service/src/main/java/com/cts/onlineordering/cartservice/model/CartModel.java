@@ -1,5 +1,7 @@
 package com.cts.onlineordering.cartservice.model;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,11 +14,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 
-public class CartModel {
+public class CartModel<Item> {
 	
 	private Integer user_id;
 	private Integer item_id;
 	private Integer item_quantity;
-	
+	private List<Item> ltemlist;
 
 }
