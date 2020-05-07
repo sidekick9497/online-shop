@@ -7,11 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
+
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,22 +25,26 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Data
 @Entity
-@Table(name="cart_table")
+@Table(name="item_table")
 
-public abstract class Cart {
+
+public class Item {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
-	private Integer user_id;
-	@Column
 	private Integer item_id;
 	@Column
-	private Integer item_quantity;
+	private String item_name;
+	@Column
+	private Integer item_price;
+	@Column
+	private String item_description;
 	@ManyToOne
-	@JoinColumn(name = "item_id",insertable = true,updatable = true)
-	private Item  allItem;
+	@OneToMany(mappedBy = "allItem")
+	Set<Item> allItems;
 
-	
+
 }
