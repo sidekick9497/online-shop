@@ -14,9 +14,9 @@ import lombok.ToString;
 public class ItemModel {
 	
 	private Integer item_id;
-	private Integer item_name;
+	private String item_name;
 	private Integer item_price;
-	private Integer item_descrption;
+	private String item_descrption;
 	private Integer item_quantity;
 	
 
