@@ -37,7 +37,7 @@ public class CartServiceImpl implements ICartService {
 	public Boolean addProduct(CartModel product)
 	{
 		Cart cart=new Cart();
-		cart.setUser_id(product.getUser_id());
+		cart.setUserId(product.getUser_id());
 		cart.setItem_id(product.getItem_id());
 		cart.setItem_quantity(product.getItem_quantity());
 		cart = cartrepo.save(cart);
@@ -47,9 +47,7 @@ public class CartServiceImpl implements ICartService {
 
 	@Override
 	public CartModel getAllProducts(Integer userId) {
-
-
-		List<Cart> cartItems = this.cartrepo.findCartsByUser_id(userId);
+		List<Cart> cartItems = this.cartrepo.findCartsByUserId(userId);
 		CartModel cartModel = new CartModel();
 		for(Cart cart: cartItems)
 		  {
