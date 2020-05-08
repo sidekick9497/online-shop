@@ -7,7 +7,6 @@ import com.cts.onlineordering.cartservice.model.CartModel;
 import org.springframework.stereotype.Service;
 
 
-@Service
 public interface ICartService {
 	
 	CartModel getAllProducts();

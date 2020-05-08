@@ -14,11 +14,13 @@ public class CartController {
     @Autowired
     private ICartService cartService;
 
+
+
     @GetMapping("/cart/items")
     public ResponseEntity<CartModel> getCartItems()
     {	        cartService.getAllProducts();
-	
-	return null;
+    
+                return null;
         
     }
 

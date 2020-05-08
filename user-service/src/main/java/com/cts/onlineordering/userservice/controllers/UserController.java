@@ -7,13 +7,15 @@ import com.cts.onlineordering.userservice.service.UserServiceImpl;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import springfox.documentation.service.Header;
+
+import javax.servlet.http.HttpServletRequest;
 
 
 @RestController
@@ -48,6 +50,14 @@ public class UserController implements IUserController {
     {
         // user log-in user here
         return new ResponseEntity<>(true,HttpStatus.OK);
+    }
+    @GetMapping("/getUserId")
+    public  ResponseEntity<Integer> getUserId(@RequestHeader HttpHeaders headers)
+    {
+        String user= headers.get("user-name").get(0);
+        logger.info("user id is " + user);
+        Integer id = this.userService.getUserId(user);
+        return new ResponseEntity<>(id,HttpStatus.OK);
     }
 
 }
