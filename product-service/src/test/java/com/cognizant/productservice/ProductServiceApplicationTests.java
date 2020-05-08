@@ -1,23 +1,23 @@
 package com.cognizant.productservice;
 
-import org.junit.jupiter.api.BeforeAll;
+//import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
+//import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.*;
-import org.mockito.stubbing.Answer;
+//import org.mockito.stubbing.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import static org.junit.Assert.assertNotNull;
+//import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
+//import static org.junit.jupiter.api.Assertions.assertNotEquals;
+//import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.mockito.Mockito.when;
 
 
 import org.junit.runner.RunWith;
-import org.skyscreamer.jsonassert.JSONAssert;
+//import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
@@ -41,23 +41,43 @@ class ProductServiceApplicationTests {
 	@MockBean
 	private ProductRepository prodrepo;
 	
-	Category cat;
-	CategoryModel catM ;
-	Product prod ;
+	Category category1;
+	CategoryModel categoryModel1 ;
+	Category category2;
+	CategoryModel categoryModel2;
+	
+	Product product ;
 	ProductModel expectedOutput;
+	ProductModel inputProduct;
+	Product expectedProduct;
 	
 	@BeforeEach
     public void init() {
-
+		category1 = new Category(201, "cat 1", "breif", null);
+		categoryModel1 = new CategoryModel(201, "cat 1", "breif");
+		product = new Product(101,"Item 1", 10000,"item 1 description", category1);
+		expectedOutput= new ProductModel(101,"Item 1", 10000,"item 1 description", categoryModel1);
+		
+		inputProduct = new ProductModel();
+		inputProduct.setItem_name("Item 1");
+		inputProduct.setItem_price(1000);
+		inputProduct.setItem_description("item 1 description");
+		inputProduct.setAllCategory(categoryModel1);
+		
+		expectedProduct = new Product(101,"Item 1", 10000,"item 1 updated description", category1);
+		
+		category2 = new Category(202, "cat 2", "breif 2", null);
+		categoryModel2 = new CategoryModel(202, "cat 2", "breif 2");
+		
+		
+		
+		
     }
 	
 	@Test
 	void getProductDetailsTest() {
-		cat = new Category(201, "cat 1", "breif", null);
-		catM = new CategoryModel(201, "cat 1", "breif");
-		prod = new Product(101,"Item 1", 10000,"item 1 description", cat);
-		expectedOutput= new ProductModel(101,"Item 1", 10000,"item 1 description", catM);
-		when(prodrepo.findById(101)).thenReturn(Optional.of(prod));
+		
+		when(prodrepo.findById(101)).thenReturn(Optional.of(product));
 		
 		assertEquals(expectedOutput.getItem_id(),prodservice.getProductDetails(101).getItem_id());
 		assertEquals(expectedOutput.getItem_name(),prodservice.getProductDetails(101).getItem_name());
@@ -69,57 +89,31 @@ class ProductServiceApplicationTests {
 	
 	@Test
 	void addProductTest() {
-		cat = new Category(201, "cat 1", "breif", null);
-		catM = new CategoryModel(201, "cat 1", "breif");
-		
-		ProductModel inputP = new ProductModel();
-		inputP.setItem_name("Item 1");
-		inputP.setItem_price(1000);
-		inputP.setItem_description("item 1 description");
-		inputP.setAllCategory(catM);
-		
-		
-		prod = new Product(0,"Item 1", 10000,"item 1 description", cat);
-		Product expectedProd = new Product(101,"Item 1", 10000,"item 1 description", cat);
-		
-		when(prodrepo.save(prod)).thenReturn(expectedProd);
-		
-		
-		assertEquals(true, prodservice.addProduct(inputP));
+		expectedProduct = new Product(0,"Item 1", 10000,"item 1 description", category1);
+		when(prodrepo.save(expectedProduct)).thenReturn(product);
+		assertEquals(true, prodservice.addProduct(inputProduct));
 	}
 	
 	
 	@Test
 	void updateProductTest() {
-		cat = new Category(201, "cat 1", "breif", null);
-		catM = new CategoryModel(201, "cat 1", "breif");
-		Product expectedProd = new Product(101,"Item 1", 10000,"item 1 updated description", cat);
-		Product inputProd = new Product(101,"Item 1", 10000,"item 1 description", cat);
-		ProductModel inputProdModel = new ProductModel(101,"Item 1", 10000,"item 1 description", catM);
-		when(prodrepo.save(inputProd)).thenReturn(expectedProd);
-		assertEquals(true, prodservice.updateProduct(inputProdModel));
-		
+		when(prodrepo.save(product)).thenReturn(expectedProduct);
+		assertEquals(true, prodservice.updateProduct(expectedOutput));	
 	}
 	
 	@Test
 	void allProductsTest() {
-		cat = new Category(201, "cat 1", "breif", null);
-		Category cat2 = new Category(202, "cat 2", "breif 2", null);
-		
-		catM = new CategoryModel(201, "cat 1", "breif");
-		CategoryModel catM2 = new CategoryModel(202, "cat 2", "breif 2");
 		
 		List<Product> allProd = new ArrayList();
-		Product inputProd1 = new Product(101,"Item 1", 10000,"item 1 description", cat);
-		Product inputProd2 = new Product(102,"Item 2", 1245,"item 2 des", cat2);
-		allProd.add(inputProd1);
-		allProd.add(inputProd2);
+
+		allProd.add(product);
+		product = new Product(102,"Item 2", 1245,"item 2 des", category2);
+		allProd.add(product);
 		
 		List<ProductModel> allProdModel = new ArrayList();
-		ProductModel ProdModel = new ProductModel(101,"Item 1", 10000,"item 1 description", catM);
-		ProductModel ProdModel2 = new ProductModel(102,"Item 2", 1245,"item 2 des", catM2);
-		allProdModel.add(ProdModel);
-		allProdModel.add(ProdModel2);
+		allProdModel.add(expectedOutput);
+		expectedOutput = new ProductModel(102,"Item 2", 1245,"item 2 des", categoryModel2);
+		allProdModel.add(expectedOutput);
 		
 		when(prodrepo.findAll()).thenReturn(allProd);
 		int i=0;
@@ -127,6 +121,5 @@ class ProductServiceApplicationTests {
 			assertEquals(p.getItem_id(), prodservice.getAllProducts().get(i).getItem_id());
 			i++;
 		}
-		
 	}
 }
