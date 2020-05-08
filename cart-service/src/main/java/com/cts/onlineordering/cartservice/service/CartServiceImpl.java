@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.cts.onlineordering.cartservice.model.ProductModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -18,6 +20,13 @@ public class CartServiceImpl implements ICartService {
 	
 	@Autowired
 	CartRepository cartrepo;
+	@Autowired
+	private RestTemplate restTemplate;
+
+	@Bean
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
+	}
 	
 	@Override
 	public void addProduct(CartModel product)
@@ -32,8 +41,18 @@ public class CartServiceImpl implements ICartService {
 
 	@Override
 	public List<CartModel> getAllProducts() {
-		
-		return null;
+
+		int userId = 1;
+		List<Cart> cartItems = this.cartrepo.findCartsByUser_id(userId);
+		List<CartModel> cartModel  = new ArrayList<>();
+		for(Cart cart: cartItems)
+		{
+			
+			ProductModel product = restTemplate.getForObject("url",ProductModel.class);// just give the url for the product
+
+
+		}
+
 	}
 
 	@Override
