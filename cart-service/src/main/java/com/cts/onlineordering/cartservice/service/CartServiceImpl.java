@@ -54,18 +54,12 @@ public class CartServiceImpl implements ICartService {
 		for(Cart cart: cartItems)
 		{
 
-<<<<<<< HEAD
-
-		}
-		return cartModel;
-		
-=======
 			ItemModel itemModel = restTemplate.getForObject("http://localhost:8282/admin/product/id",ItemModel.class);// just give the url for the product
 			itemModel.setItem_quantity(cart.getItem_quantity());
 			cartModel.getLtemlist().add(itemModel);
 			}
 		return cartModel;
->>>>>>> b2223b46b60b213ffe28520c9ecc78e1dd190ba2
+>
 
 	}
 
