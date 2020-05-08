@@ -1,10 +1,8 @@
-package com.cognizant.orderservice.controllers;
+package com.cognizant.orderservice.controller;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import lombok.extern.slf4j.Slf4j;
 
 @RestController
 public class OrderController implements IOrderController {

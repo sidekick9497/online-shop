@@ -1,6 +1,7 @@
 package com.cognizant.apigateway.filter;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Component;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
+import org.springframework.web.servlet.function.ServerResponse;
 
 // Registers this class as Zuul Filter
 // ZullFilter is an abstract class
@@ -31,6 +33,11 @@ public class LoggingFilter extends ZuulFilter{
 		// TODO Auto-generated method stub
 		// filter logic goes here
 		HttpServletRequest request = RequestContext.getCurrentContext().getRequest();
+		HttpServletResponse response = RequestContext.getCurrentContext().getResponse();
+		//response.setHeader("user-name",request.getUserPrincipal().getName());
+		RequestContext.getCurrentContext().addZuulResponseHeader("user-name",request.getUserPrincipal().getName());
+		RequestContext.getCurrentContext().addZuulRequestHeader("user-name",request.getUserPrincipal().getName());
+		this.logger.info("user name is " + request.getUserPrincipal().getName());
 		this.logger.info("Zuul Intercepts : " + request.getRequestURL());
 		return null;
 	}

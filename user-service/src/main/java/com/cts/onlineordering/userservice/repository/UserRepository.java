@@ -9,5 +9,5 @@ import com.cts.onlineordering.userservice.entity.UserEntity;
 public interface UserRepository extends JpaRepository<UserEntity, Integer>{
 	
 	//UserEntity findByUserNameAndPassword(String Username , String Password);
-
+    UserEntity findByUserName(String userName);
 }
