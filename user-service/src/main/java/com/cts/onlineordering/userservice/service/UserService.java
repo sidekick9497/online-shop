@@ -10,4 +10,5 @@ public interface UserService {
 	
 	UserModel addUser(UserModel userModel);
 
+    Integer getUserId(String user);
 }

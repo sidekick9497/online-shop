@@ -1,6 +1,7 @@
 package com.cognizant.apigateway.filter;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -20,7 +21,6 @@ public class CorsFilter implements Filter {
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
 
         final HttpServletResponse response = (HttpServletResponse) res;
-        
 
 
         response.setHeader("Access-Control-Allow-Origin", "localhost:4200");
@@ -28,6 +28,7 @@ public class CorsFilter implements Filter {
         response.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type,x-requested-with");
         response.setHeader("Access-Control-Max-Age", "3600");
         if ("OPTIONS".equalsIgnoreCase(((HttpServletRequest) req).getMethod())) {
+
             response.setStatus(HttpServletResponse.SC_OK);
             return;
         } else {

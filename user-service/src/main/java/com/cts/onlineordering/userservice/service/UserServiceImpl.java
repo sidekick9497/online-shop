@@ -42,4 +42,14 @@ public class UserServiceImpl implements UserService{
 		return userModel;
 	}
 
+	@Override
+	public Integer getUserId(String user) {
+		UserEntity userEntity  = this.user.findByUserName(user);
+		if(userEntity != null)
+		{
+			return userEntity.getUserId();
+		}
+		return -1;
+	}
+
 }
