@@ -9,7 +9,6 @@ import com.cts.onlineordering.cartservice.entity.Cart;
 
 
 public interface CartRepository extends JpaRepository<Cart, Integer> {
-	
-	List<Cart> findByUserId(Integer id);
 
+	List<Cart> findCartsByUser_id(Integer userid);
 }
