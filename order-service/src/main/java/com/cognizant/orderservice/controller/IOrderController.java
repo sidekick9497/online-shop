@@ -1,4 +1,4 @@
-package com.cognizant.orderservice.controllers;
+package com.cognizant.orderservice.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

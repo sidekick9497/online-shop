@@ -1,7 +1,7 @@
-package com.cts.onlineordering.cartservice.controllers;
+package com.cts.onlineordering.cartservice.controller;
 
 import com.cts.onlineordering.cartservice.model.CartModel;
-import com.cts.onlineordering.cartservice.model.ItemModel;
+import com.cts.onlineordering.cartservice.model.ProductModel;
 import com.cts.onlineordering.cartservice.service.ICartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,11 +16,20 @@ public class CartController {
 
 
 
-    @GetMapping("/cart/items")
-    public ResponseEntity<CartModel> getCartItems()
-    {	        cartService.getAllProducts();
-    
-                return null;
+    @GetMapping("/cart/testRest")
+    public  ResponseEntity<ProductModel> testRestTemplate()
+    {
+        ProductModel productModel = cartService.getProduct();
+        return new ResponseEntity<>(productModel,HttpStatus.OK);
+
+    }
+    @GetMapping("/cart/items/{id}")
+    public ResponseEntity<CartModel> getCartItems(@PathVariable Integer id)
+    {
+
+                CartModel cartModel = cartService.getAllProducts(id);
+
+                return new ResponseEntity<>(cartModel,HttpStatus.OK);
         
     }
 
@@ -30,19 +39,14 @@ public class CartController {
         cartService.addProduct(item);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
-    @PutMapping("/cart/quantityplus/{itemId}/quantity/{quantity}")
-    public ResponseEntity<Boolean> addQuantity(@PathVariable Integer itemId,@PathVariable Integer quantity)
+    @PutMapping("/cart/updateQuantity")
+    public ResponseEntity<Boolean> addQuantity(@RequestBody CartModel item)
     {
-        cartService.increaseQuantity(itemId,quantity);
+        cartService.addProduct(item);
         return new ResponseEntity<Boolean>(true,HttpStatus.OK);
     }
 
-    @PutMapping("/cart/quantityminus/{itemId}/quantity/{quantity}")
-    public ResponseEntity<Boolean> minusQuantity(@PathVariable Integer itemId,@PathVariable Integer quantity)
-    {
-        cartService.decreaseQuantity(itemId,quantity);
-        return new ResponseEntity<Boolean>(true,HttpStatus.OK);
-    }
+
     @DeleteMapping("/cart/{itemId}")
     public ResponseEntity<Boolean> deleteItem(@PathVariable Integer itemId)
     {

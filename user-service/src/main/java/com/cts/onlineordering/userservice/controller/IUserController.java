@@ -1,4 +1,4 @@
-package com.cts.onlineordering.userservice.controllers;
+package com.cts.onlineordering.userservice.controller;
 
 import com.cts.onlineordering.userservice.model.UserModel;
 import org.springframework.http.ResponseEntity;

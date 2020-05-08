@@ -1,4 +1,4 @@
-package com.cognizant.productservice.controllers;
+package com.cognizant.productservice.controller;
 
 import com.cognizant.productservice.model.ProductModel;
 import com.cognizant.productservice.service.ProductService;

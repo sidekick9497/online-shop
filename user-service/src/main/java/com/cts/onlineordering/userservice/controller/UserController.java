@@ -1,21 +1,15 @@
-package com.cts.onlineordering.userservice.controllers;
+package com.cts.onlineordering.userservice.controller;
 
 
 import com.cts.onlineordering.userservice.model.UserModel;
-import com.cts.onlineordering.userservice.service.UserService;
 import com.cts.onlineordering.userservice.service.UserServiceImpl;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.service.Header;
-
-import javax.servlet.http.HttpServletRequest;
 
 
 @RestController
