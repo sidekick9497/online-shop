@@ -1,12 +1,14 @@
 package com.cts.onlineordering.cartservice.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
 import com.cts.onlineordering.cartservice.model.ProductModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -32,7 +34,7 @@ public class CartServiceImpl implements ICartService {
 	public Boolean addProduct(CartModel product)
 	{
 		Cart cart=new Cart();
-		cart.setUser_Id(product.getUser_id());
+		cart.setUser_id(product.getUser_id());
 		cart.setItem_id(product.getItem_id());
 		cart.setItem_quantity(product.getItem_quantity());
 		cart = cartrepo.save(cart);
@@ -48,11 +50,16 @@ public class CartServiceImpl implements ICartService {
 		List<CartModel> cartModel  = new ArrayList<>();
 		for(Cart cart: cartItems)
 		{
-			
-			ProductModel product = restTemplate.getForObject("url",ProductModel.class);// just give the url for the product
 
-
-		}
+			ProductModel product = restTemplate.getForObject("http://localhost:8282/admin/product/id",ProductModel.class);// just give the url for the product
+			cartModel.add(product);
+//
+//			ResponseEntity<ProductModel> product = restTemplate.getForEntity("http://localhost:8282/admin/product/id", ProductModel.class);
+//					//getForObject("http://localhost:8282/admin/product/id",ProductModel.class);// just give the url for the product
+//			Arrays.asList(product.getBody());
+//			cartModel.add((CartModel) Arrays.asList(product.getBody()));
+			}
+		return cartModel;
 
 	}
 

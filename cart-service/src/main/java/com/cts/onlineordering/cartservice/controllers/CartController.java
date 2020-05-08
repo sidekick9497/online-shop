@@ -17,6 +17,7 @@ public class CartController {
     @GetMapping("/cart/items")
     public ResponseEntity<CartModel> getCartItems()
     {	        cartService.getAllProducts();
+	
 	return null;
         
     }
