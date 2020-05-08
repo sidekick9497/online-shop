@@ -1,6 +1,7 @@
 package com.cts.onlineordering.userservice.controllers;
 
 
+import com.cts.onlineordering.userservice.Exceptions.UserErrorResponse;
 import com.cts.onlineordering.userservice.model.UserModel;
 import com.cts.onlineordering.userservice.service.UserService;
 import com.cts.onlineordering.userservice.service.UserServiceImpl;
@@ -10,6 +11,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -49,5 +51,18 @@ public class UserController implements IUserController {
         // user log-in user here
         return new ResponseEntity<>(true,HttpStatus.OK);
     }
+    
+    @ExceptionHandler  // ~catch
+	public ResponseEntity<UserErrorResponse> productOperationErrorHAndler(Exception ex) {
+		// create error object
+		UserErrorResponse error = new UserErrorResponse(ex.getMessage(), 
+															  HttpStatus.BAD_REQUEST.value(), 
+															  System.currentTimeMillis());
+		ResponseEntity<UserErrorResponse> response =
+										new ResponseEntity<UserErrorResponse>(error, HttpStatus.NOT_FOUND);
+		logger.error("Exception :" + error);
+		
+		return response;
+	}
 
 }
