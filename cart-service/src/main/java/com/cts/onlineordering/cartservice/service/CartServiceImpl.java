@@ -46,10 +46,10 @@ public class CartServiceImpl implements ICartService {
 	}
 
 	@Override
-	public CartModel getAllProducts(Integer cartId) {
+	public CartModel getAllProducts(Integer userId) {
 
 
-		List<Cart> cartItems = this.cartrepo.findCartsByUser_id(cartId);
+		List<Cart> cartItems = this.cartrepo.findCartsByUser_id(userId);
 		CartModel cartModel = new CartModel();
 		for(Cart cart: cartItems)
 		  {
@@ -72,7 +72,7 @@ public class CartServiceImpl implements ICartService {
 
 	@Override
 	public ProductModel getProduct() {
-		ProductModel productModel = restTemplate.getForObject("http://localhost:8282/admin/product/1",ProductModel.class);// just give the url for the product
+		ProductModel productModel = restTemplate.getForObject("http://localhost:8282/product/1",ProductModel.class);// just give the url for the product
 		return productModel;
 	}
 	
