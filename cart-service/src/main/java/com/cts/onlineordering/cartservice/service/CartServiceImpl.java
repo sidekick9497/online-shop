@@ -43,16 +43,17 @@ public class CartServiceImpl implements ICartService {
 	}
 
 	@Override
-	public List<CartModel> getAllProducts() {
+	public CartModel getAllProducts() {
 
 		int userId = 1;
 		List<Cart> cartItems = this.cartrepo.findCartsByUser_id(userId);
-		List<CartModel> cartModel  = new ArrayList<>();
+		CartModel cartModel = new CartModel();
 		for(Cart cart: cartItems)
 		{
 
-			ProductModel product = restTemplate.getForObject("http://localhost:8282/admin/product/id",ProductModel.class);// just give the url for the product
-			cartModel.add(product);
+			ItemModel itemModel = restTemplate.getForObject("http://localhost:8282/admin/product/id",ItemModel.class);// just give the url for the product
+			itemModel.setItem_quantity(cart.getItem_quantity());
+			cartModel.getLtemlist().add(itemModel);
 //
 //			ResponseEntity<ProductModel> product = restTemplate.getForEntity("http://localhost:8282/admin/product/id", ProductModel.class);
 //					//getForObject("http://localhost:8282/admin/product/id",ProductModel.class);// just give the url for the product
