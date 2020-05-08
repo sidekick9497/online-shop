@@ -49,12 +49,21 @@ public class CartServiceImpl implements ICartService {
 	public CartModel getAllProducts(Integer userId) {
 		List<Cart> cartItems = this.cartrepo.findCartsByUserId(userId);
 		CartModel cartModel = new CartModel();
+		cartModel.setLtemlist(new ArrayList<ItemModel>());
+		cartModel.setUser_id(userId);
 		for(Cart cart: cartItems)
 		  {
 			Integer id = cart.getItem_id();
-			ItemModel itemModel = restTemplate.getForObject("http://localhost:8282/product/"+id,ItemModel.class);// just give the url for the product
-			itemModel.setItem_quantity(cart.getItem_quantity());
-			cartModel.getLtemlist().add(itemModel);
+			ProductModel productModel = restTemplate.getForObject("http://localhost:8282/product/"+id,ProductModel.class);// just give the url for the product
+			 ItemModel itemModel = new ItemModel();
+			 itemModel.setItem_quantity(cart.getItem_quantity());
+			 itemModel.setItem_name(productModel.getItem_name());
+			 itemModel.setItem_id(productModel.getItem_id());
+			 itemModel.setItem_descrption(productModel.getItem_description());
+			 itemModel.setItem_price(productModel.getItem_price());
+			  itemModel.setItem_quantity(cart.getItem_quantity());
+
+			  cartModel.getLtemlist().add(itemModel);
 			}
 		return cartModel;
 
