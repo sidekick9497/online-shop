@@ -1,5 +1,6 @@
 package com.cognizant.productservice.controllers;
 
+import com.cognizant.productservice.exceptions.ProductErrorResponse;
 import com.cognizant.productservice.model.ProductModel;
 import com.cognizant.productservice.service.ProductService;
 import org.slf4j.LoggerFactory;
@@ -68,4 +69,40 @@ public class AdminProductController implements  IAdminProductController {
         return new  ResponseEntity<List<ProductModel>>(allProducts,HttpStatus.OK);
 
     }
+
+
+
+
+@ExceptionHandler  // ~catch
+public ResponseEntity<ProductErrorResponse> productOperationErrorHAndler(Exception ex) {
+	// create error object
+	ProductErrorResponse error = new ProductErrorResponse(ex.getMessage(), 
+														  HttpStatus.BAD_REQUEST.value(), 
+														  System.currentTimeMillis());
+	ResponseEntity<ProductErrorResponse> response =
+									new ResponseEntity<ProductErrorResponse>(error, HttpStatus.NOT_FOUND);
+	logger.error("Exception :" + error);
+	
+	return response;
 }
+
+
+@ExceptionHandler  // ~catch
+public ResponseEntity<ProductErrorResponse> ProductOperationErrorHAndler(Exception ex) {
+	// create error object
+	ProductErrorResponse error = new ProductErrorResponse(ex.getMessage(), 
+														  HttpStatus.BAD_REQUEST.value(), 
+														  System.currentTimeMillis());
+	ResponseEntity<ProductErrorResponse> response =
+									new ResponseEntity<ProductErrorResponse>(error, HttpStatus.NOT_FOUND);
+	logger.error("Exception :" + error);
+	
+	return response;
+}
+
+}
+
+
+
+
+

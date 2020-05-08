@@ -1,12 +1,14 @@
 package com.cts.onlineordering.cartservice.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
 import com.cts.onlineordering.cartservice.model.ProductModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -32,7 +34,7 @@ public class CartServiceImpl implements ICartService {
 	public Boolean addProduct(CartModel product)
 	{
 		Cart cart=new Cart();
-		cart.setUser_Id(product.getUser_id());
+		cart.setUser_id(product.getUser_id());
 		cart.setItem_id(product.getItem_id());
 		cart.setItem_quantity(product.getItem_quantity());
 		cart = cartrepo.save(cart);
@@ -41,20 +43,31 @@ public class CartServiceImpl implements ICartService {
 	}
 
 	@Override
-	public List<CartModel> getAllProducts() {
+	public CartModel getAllProducts() {
 
 		int userId = 1;
 		List<Cart> cartItems = this.cartrepo.findCartsByUser_id(userId);
-		List<CartModel> cartModel  = new ArrayList<>();
+		CartModel cartModel = new CartModel();
 		for(Cart cart: cartItems)
 		{
-			
-			ProductModel product = restTemplate.getForObject("url",ProductModel.class);// just give the url for the product
 
+<<<<<<< HEAD
 
 		}
 		return cartModel;
 		
+=======
+			ItemModel itemModel = restTemplate.getForObject("http://localhost:8282/admin/product/id",ItemModel.class);// just give the url for the product
+			itemModel.setItem_quantity(cart.getItem_quantity());
+			cartModel.getLtemlist().add(itemModel);
+//
+//			ResponseEntity<ProductModel> product = restTemplate.getForEntity("http://localhost:8282/admin/product/id", ProductModel.class);
+//					//getForObject("http://localhost:8282/admin/product/id",ProductModel.class);// just give the url for the product
+//			Arrays.asList(product.getBody());
+//			cartModel.add((CartModel) Arrays.asList(product.getBody()));
+			}
+		return cartModel;
+>>>>>>> b2223b46b60b213ffe28520c9ecc78e1dd190ba2
 
 	}
 

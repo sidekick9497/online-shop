@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface ICartService {
 	
-	List<CartModel> getAllProducts();
+	CartModel getAllProducts();
 	public Boolean addProduct(CartModel product);
 	public Boolean deleteProduct(Integer id);
 	public Boolean increaseQuantity(Integer id, Integer quantity);
