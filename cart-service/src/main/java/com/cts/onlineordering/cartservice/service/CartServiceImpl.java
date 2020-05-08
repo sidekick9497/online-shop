@@ -20,13 +20,14 @@ public class CartServiceImpl implements ICartService {
 	CartRepository cartrepo;
 	
 	@Override
-	public void addProduct(CartModel product)
+	public Boolean addProduct(CartModel product)
 	{
 		Cart cart=new Cart();
 		cart.setUser_Id(product.getUser_id());
 		cart.setItem_id(product.getItem_id());
 		cart.setItem_quantity(product.getItem_quantity());
 		cart = cartrepo.save(cart);
+		return true;
 		
 	}
 
@@ -37,17 +38,19 @@ public class CartServiceImpl implements ICartService {
 	}
 
 	@Override
-	public void deleteProduct(Integer id) {
+	public Boolean deleteProduct(Integer id) {
 		// TODO Auto-generated method stub
 		this.cartrepo.deleteById(id);
+		return true;
 
 	}
 	
 	@Override
-	public void increaseQuantity(Integer id, Integer quantity) {
+	public Boolean increaseQuantity(Integer id, Integer quantity) {
 		Cart cart = cartrepo.findById(id).get();
 		cart.setItem_quantity(cart.getItem_quantity() + quantity);
 		this.cartrepo.save(cart);
+		return true;
 
 	}
 

@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 public interface ICartService {
 	
 	List<CartModel> getAllProducts();
-	public void addProduct(CartModel product);
-	public void deleteProduct(Integer id);
-	public void increaseQuantity(Integer id, Integer quantity);
+	public Boolean addProduct(CartModel product);
+	public Boolean deleteProduct(Integer id);
+	public Boolean increaseQuantity(Integer id, Integer quantity);
 	public Boolean decreaseQuantity(Integer id, Integer quantity);
 	
 	
