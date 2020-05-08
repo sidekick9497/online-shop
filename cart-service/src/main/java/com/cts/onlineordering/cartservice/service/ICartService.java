@@ -13,7 +13,5 @@ public interface ICartService {
 	CartModel getAllProducts(Integer id);
 	public Boolean addProduct(CartModel product);
 	public Boolean deleteProduct(Integer id);
-
-
 	ProductModel getProduct();
 }
