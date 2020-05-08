@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Optional;
 
 import com.cognizant.productservice.repository.CategoryRepository;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,9 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	CategoryRepository categoryRepository;
 
+	@Autowired
+	ModelMapper modelMapper;
+	
 	@Override
 	public List<ProductModel> getAllProducts() {
 		List<ProductModel> allProd = new ArrayList();
@@ -36,7 +41,8 @@ public class ProductServiceImpl implements ProductService {
 			if(category!= null) {
 				 categories = new CategoryModel(category.getCategory_id(), category.getCategory_name(), category.getCategory_brief());
 			}
-			ProductModel Prod = new ProductModel(Products.getItem_id(),Products.getItem_name(),Products.getItem_price(),Products.getItem_description(), categories);
+			//ProductModel Prod = new ProductModel(Products.getItem_id(),Products.getItem_name(),Products.getItem_price(),Products.getItem_description(), categories);
+			ProductModel Prod = modelMapper.map(Products,ProductModel.class); 
 			allProd.add(Prod);
 		}
 		

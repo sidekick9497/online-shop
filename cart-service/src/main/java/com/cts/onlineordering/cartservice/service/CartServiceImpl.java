@@ -79,7 +79,7 @@ public class CartServiceImpl implements ICartService {
 
 	@Override
 	public ProductModel getProduct() {
-		ProductModel productModel = restTemplate.getForObject("http://localhost:8282/product/1",ProductModel.class);// just give the url for the product
+		ProductModel productModel = restTemplate.getForObject("http://localhost:8282/product/2",ProductModel.class);// just give the url for the product
 		return productModel;
 	}
 	
