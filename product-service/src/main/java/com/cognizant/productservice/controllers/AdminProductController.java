@@ -87,21 +87,7 @@ public ResponseEntity<ProductErrorResponse> productOperationErrorHAndler(Excepti
 }
 
 
-@ExceptionHandler  // ~catch
-public ResponseEntity<ProductErrorResponse> ProductOperationErrorHAndler(Exception ex) {
-	// create error object
-	ProductErrorResponse error = new ProductErrorResponse(ex.getMessage(), 
-														  HttpStatus.BAD_REQUEST.value(), 
-														  System.currentTimeMillis());
-	ResponseEntity<ProductErrorResponse> response =
-									new ResponseEntity<ProductErrorResponse>(error, HttpStatus.NOT_FOUND);
-	logger.error("Exception :" + error);
-	
-	return response;
 }
-
-}
-
 
 
 
