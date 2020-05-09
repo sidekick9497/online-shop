@@ -27,7 +27,7 @@ public class OrderServiceImpl implements OrderService{
 		order.setOrderDate(orderModel.getOrderDate());
 		order.setOrderStatus(orderModel.getOrderStatus());
 		order.setOrderType(orderModel.getOrderType());
-		
+		order.setItemId(orderModel.getItemId());
 		order = orderRepo.save(order);
 //		orderModel.setOrderId(order.getOrderId());
 		
