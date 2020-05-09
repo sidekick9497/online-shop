@@ -1,12 +1,14 @@
 package com.cts.onlineordering.cartservice.service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
+import java.util.logging.Logger;
 
+import com.cts.onlineordering.cartservice.model.OrderModel;
 import com.cts.onlineordering.cartservice.model.ProductModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,7 @@ import com.cts.onlineordering.cartservice.model.ItemModel;
 import com.cts.onlineordering.cartservice.repository.CartRepository;
 import springfox.documentation.swagger2.mappers.ModelMapper;
 
+@Slf4j
 @Service
 public class CartServiceImpl implements ICartService {
 	
@@ -54,7 +57,7 @@ public class CartServiceImpl implements ICartService {
 		for(Cart cart: cartItems)
 		  {
 			Integer id = cart.getItem_id();
-			ProductModel productModel = restTemplate.getForObject("http://localhost:8282/product/"+id,ProductModel.class);// just give the url for the product
+			ProductModel productModel = restTemplate.getForObject("http://localhost:8765/product-service/product"+id,ProductModel.class);// just give the url for the product
 			 ItemModel itemModel = new ItemModel();
 			 itemModel.setItem_quantity(cart.getItem_quantity());
 			 itemModel.setItem_name(productModel.getItem_name());
@@ -83,6 +86,26 @@ public class CartServiceImpl implements ICartService {
 		ProductModel productModel = restTemplate.getForObject("http://localhost:8765/product-service/product/1",ProductModel.class);// just give the url for the product
 
 		return productModel;
+	}
+
+	@Override
+	public boolean orderCart(Integer userId) {
+		List<Cart> cartItems = cartrepo.findCartsByUserId(userId);
+		OrderModel order = new OrderModel();
+		order.setUserId(userId);
+		order.setOrderDate(new Date());
+		order.setOrderStatus("Pending");
+		order.setOrderType("normal");
+		String cartItemIds = "";
+		for(Cart cart: cartItems)
+		{
+			cartItemIds += cart.getItem_id().toString() +",";
+
+		}
+
+		order.setItemId(cartItemIds);
+		LoggerFactory.getLogger("CartServiceImpl.class").info(order.toString());
+		return false;
 	}
 	
 	/*@Override

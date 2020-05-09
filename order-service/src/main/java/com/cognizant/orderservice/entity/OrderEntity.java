@@ -35,7 +35,8 @@ public class OrderEntity {
 	@Column(name= "order_status")
 	private String orderStatus;
 	
-	
+	@Column(name = "item_id")
+	private String  itemId; //store item ids as string
 	
 		
 	

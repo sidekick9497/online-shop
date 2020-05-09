@@ -14,4 +14,5 @@ public interface ICartService {
 	public Boolean addProduct(CartModel product);
 	public Boolean deleteProduct(Integer id);
 	ProductModel getProduct();
+	public boolean orderCart(Integer userId);
 }

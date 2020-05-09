@@ -53,10 +53,10 @@ public class CartController {
         cartService.deleteProduct(itemId);
         return new ResponseEntity<Boolean>(true,HttpStatus.OK);
     }
-    @GetMapping("/cart/order/{userid}")
+    @PostMapping("/cart/order/{userId}")
     public ResponseEntity<Boolean> orderCart(@PathVariable Integer userId)
     {
-        //cartService.orderCart(userId);
+        cartService.orderCart(userId);
         return new ResponseEntity<>(true,HttpStatus.OK);
     }
 }
