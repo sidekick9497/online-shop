@@ -23,4 +23,5 @@ public class OrderModel {
 	private Integer orderAmount;
 	private String orderStatus;
 	private String itemId; //store the ids of  the items as string, later can be extrated by splitting them.
+	private String itemQuantity; // store the quantity of items as string respective to the items in itemId
 }

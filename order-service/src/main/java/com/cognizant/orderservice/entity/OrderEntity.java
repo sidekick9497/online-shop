@@ -38,6 +38,9 @@ public class OrderEntity {
 	@Column(name = "item_id")
 	private String  itemId; //store item ids as string
 	
+	@Column(name = "item_qunatity")
+	private String itemQuantity;
+	
 		
 	
 }

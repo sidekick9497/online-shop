@@ -2,8 +2,13 @@ package com.cognizant.orderservice.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import com.cognizant.orderservice.model.OrderModel;
 
 @Api(value = "order controller",description = "for accessing orders of users")
 public interface IOrderController {
@@ -13,4 +18,5 @@ public interface IOrderController {
     public ResponseEntity<Boolean> addOneOrder();
     public ResponseEntity<Boolean> acceptOrder(@PathVariable Integer id);
     public ResponseEntity<Boolean> rejectOrder(@PathVariable Integer id);
+    public ResponseEntity<List<OrderModel>> getUserOrders(@PathVariable Integer userId);
 }
