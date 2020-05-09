@@ -35,9 +35,11 @@ public class LoggingFilter extends ZuulFilter{
 		HttpServletRequest request = RequestContext.getCurrentContext().getRequest();
 		HttpServletResponse response = RequestContext.getCurrentContext().getResponse();
 		//response.setHeader("user-name",request.getUserPrincipal().getName());
+		if(request.getUserPrincipal() !=null)
+		{
 		RequestContext.getCurrentContext().addZuulResponseHeader("user-name",request.getUserPrincipal().getName());
 		RequestContext.getCurrentContext().addZuulRequestHeader("user-name",request.getUserPrincipal().getName());
-		this.logger.info("user name is " + request.getUserPrincipal().getName());
+		this.logger.info("user name is " + request.getUserPrincipal().getName());}
 		this.logger.info("Zuul Intercepts : " + request.getRequestURL());
 		return null;
 	}
