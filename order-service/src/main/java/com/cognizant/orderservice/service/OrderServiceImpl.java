@@ -48,7 +48,8 @@ public class OrderServiceImpl implements OrderService{
 													temp.getOrderStatus(),
 													temp.getOrderDate(),
 													temp.getUserId(),
-													temp.getOrderType()
+													temp.getOrderType(),
+													temp.getItemId()
 												   );
 			
 			allOrders.add(orderModel);
@@ -72,7 +73,8 @@ public class OrderServiceImpl implements OrderService{
 													temp.getOrderStatus(),
 													temp.getOrderDate(),
 													temp.getUserId(),
-													temp.getOrderType()
+													temp.getOrderType(),
+													temp.getItemId()
 												   );
 			
 			allOrders.add(orderModel);
