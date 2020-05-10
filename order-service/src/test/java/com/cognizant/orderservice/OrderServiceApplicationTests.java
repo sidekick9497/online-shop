@@ -56,10 +56,10 @@ class OrderServiceApplicationTests {
 		d.setDate(12);
 		d.setMonth(02);
 		d.setYear(1334);
-		OrderModel orderModel = new OrderModel(0, 101, "Cod", d, 1324, "shipping");
-		OrderModel orderOutputModel = new OrderModel(0, 101, "Cod", d, 1324, "shipping");
-		OrderEntity orderEntity = new OrderEntity(0, 101, "Cod", d, 1324, "shipping");
-		OrderEntity orderOutputEntity = new OrderEntity(301, 101, "Cod", d, 1324, "shipping");
+		OrderModel orderModel = new OrderModel(0, 101, "Cod", d, 1324, "shipping", "101,102");
+		OrderModel orderOutputModel = new OrderModel(0, 101, "Cod", d, 1324, "shipping", "101,102");
+		OrderEntity orderEntity = new OrderEntity(0, 101, "Cod", d, 1324, "shipping","101,102");
+		OrderEntity orderOutputEntity = new OrderEntity(301, 101, "Cod", d, 1324, "shipping", "101,102");
 		
 		when(orderRepo.save(orderEntity)).thenReturn(orderOutputEntity);
 		

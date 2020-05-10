@@ -1,11 +1,21 @@
 package com.cognizant.orderservice.controller;
 
+import java.util.List;
+
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.cognizant.orderservice.model.OrderModel;
+import com.cognizant.orderservice.service.OrderService;
+
 @RestController
 public class OrderController implements IOrderController {
+	
+	private OrderService orderService;
+	
 	private org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
     
 
@@ -43,4 +53,12 @@ public class OrderController implements IOrderController {
     {
         return null;
     }
+
+    @GetMapping("userorders")
+	public ResponseEntity<List<OrderModel>> getUserOrders(@PathVariable Integer userId) {
+		// TODO Auto-generated method stub
+    	List<OrderModel> allOrders = orderService.getUsersOrders(userId);
+//		return ResponseEntity<List<OrderModel>>(allOrders, HttpStatus.OK);
+    	return null;
+	}
 }

@@ -27,7 +27,7 @@ public class OrderServiceImpl implements OrderService{
 		order.setOrderDate(orderModel.getOrderDate());
 		order.setOrderStatus(orderModel.getOrderStatus());
 		order.setOrderType(orderModel.getOrderType());
-		
+		order.setItemId(orderModel.getItemId());
 		order = orderRepo.save(order);
 //		orderModel.setOrderId(order.getOrderId());
 		
@@ -48,7 +48,9 @@ public class OrderServiceImpl implements OrderService{
 													temp.getOrderStatus(),
 													temp.getOrderDate(),
 													temp.getUserId(),
-													temp.getOrderType()
+													temp.getOrderType(),
+													temp.getItemId(),
+													temp.getItemQuantity()
 												   );
 			
 			allOrders.add(orderModel);
@@ -72,7 +74,9 @@ public class OrderServiceImpl implements OrderService{
 													temp.getOrderStatus(),
 													temp.getOrderDate(),
 													temp.getUserId(),
-													temp.getOrderType()
+													temp.getOrderType(),
+													temp.getItemId(),
+													temp.getItemQuantity()
 												   );
 			
 			allOrders.add(orderModel);

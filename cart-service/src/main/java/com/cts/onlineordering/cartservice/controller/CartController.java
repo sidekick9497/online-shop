@@ -61,6 +61,7 @@ public class CartController {
         cartService.deleteProduct(itemId);
         return new ResponseEntity<Boolean>(true,HttpStatus.OK);
     }
+<<<<<<< HEAD
     
     
     public List<Cart> getfallbackCartItems(@PathVariable Integer id){
@@ -70,5 +71,12 @@ public class CartController {
 
 
     	
+=======
+    @PostMapping("/cart/order/{userId}")
+    public ResponseEntity<Boolean> orderCart(@PathVariable Integer userId)
+    {
+        cartService.orderCart(userId);
+        return new ResponseEntity<>(true,HttpStatus.OK);
+>>>>>>> 3fd2a3a6d16d11babcb429baba4a00cc13b44593
     }
 }
