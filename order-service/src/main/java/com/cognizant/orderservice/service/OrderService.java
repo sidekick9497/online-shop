@@ -11,4 +11,6 @@ public interface OrderService {
 	List<OrderModel> getUsersOrders(int userId);
 	
 	List<OrderModel> allOrders();
+	
+	OrderModel getOrder(int id);
 }

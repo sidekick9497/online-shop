@@ -20,10 +20,10 @@ public class OrderController implements IOrderController {
     
 
     @GetMapping("orders/:id")
-    public ResponseEntity<Object> getOneOrder() //add orders object
+    public ResponseEntity<OrderModel> getOneOrder(@PathVariable Integer id) //add orders object
     {
      
-        return  null;
+        return new ResponseEntity<OrderModel>(orderService.getOrder(id), HttpStatus.OK);
     }
 
     @Override
@@ -58,7 +58,6 @@ public class OrderController implements IOrderController {
 	public ResponseEntity<List<OrderModel>> getUserOrders(@PathVariable Integer userId) {
 		// TODO Auto-generated method stub
     	List<OrderModel> allOrders = orderService.getUsersOrders(userId);
-//		return ResponseEntity<List<OrderModel>>(allOrders, HttpStatus.OK);
-    	return null;
+		return new ResponseEntity<List<OrderModel>>(allOrders, HttpStatus.OK);
 	}
 }

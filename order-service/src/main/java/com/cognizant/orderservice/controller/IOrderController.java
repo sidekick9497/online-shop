@@ -19,4 +19,5 @@ public interface IOrderController {
     public ResponseEntity<Boolean> acceptOrder(@PathVariable Integer id);
     public ResponseEntity<Boolean> rejectOrder(@PathVariable Integer id);
     public ResponseEntity<List<OrderModel>> getUserOrders(@PathVariable Integer userId);
+    public ResponseEntity<OrderModel> getOneOrder(@PathVariable Integer orderId);
 }

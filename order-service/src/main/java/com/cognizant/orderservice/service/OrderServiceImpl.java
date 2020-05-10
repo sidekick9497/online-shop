@@ -3,6 +3,7 @@ package com.cognizant.orderservice.service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -84,6 +85,27 @@ public class OrderServiceImpl implements OrderService{
 		
 		
 		return allOrders;
+	}
+
+	@Override
+	public OrderModel getOrder(int id) {
+		// TODO Auto-generated method stub
+		OrderModel orderModel = null;
+		Optional res = orderRepo.findById(id);
+		if(res.isPresent()) {
+			OrderEntity orderEntity = (OrderEntity) res.get();
+			orderModel = new OrderModel(
+										orderEntity.getOrderId(),
+										orderEntity.getUserId(),
+										orderEntity.getItemId(),
+										orderEntity.getOrderDate(),
+										orderEntity.getOrderAmount(),
+										orderEntity.getItemQuantity(),
+										orderEntity.getOrderStatus(),
+										orderEntity.getOrderType()
+									   );
+		}
+		return orderModel;
 	}
 
 }
