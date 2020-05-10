@@ -11,12 +11,20 @@ import org.springframework.web.bind.annotation.*;
 import com.cognizant.orderservice.model.OrderModel;
 import com.cognizant.orderservice.service.OrderService;
 
+
 @RestController
 public class OrderController implements IOrderController {
 	
 	private OrderService orderService;
 	
 	private org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
+    
+
+    @Override
+    public String testConfigServer() {
+        return null;
+    }
+
     
 
     @GetMapping("orders/:id")
@@ -26,20 +34,19 @@ public class OrderController implements IOrderController {
         return new ResponseEntity<OrderModel>(orderService.getOrder(id), HttpStatus.OK);
     }
 
-    @Override
-    public String testConfigServer() {
-        return null;
-    }
-
+    
     @GetMapping("orders")
     public ResponseEntity<Object> getAllOrders()//add ordersObject
     {
-        return null;
+        return new ResponseEntity<Object>(orderService.allOrders(), HttpStatus.OK);
     }
     @PostMapping("orders")
-    public ResponseEntity<Boolean> addOneOrder() //add orders Object in the method parameter
+    public ResponseEntity<Boolean> addOneOrder(@RequestBody OrderModel orderModel) //add orders Object in the method parameter
     {
-        return  null;
+        orderService.addOrder(orderModel);
+        
+        ResponseEntity<Boolean> response = new ResponseEntity<>(true, HttpStatus.OK);
+        return  response;
     }
 
     @PutMapping("orders/action/accept/:id")

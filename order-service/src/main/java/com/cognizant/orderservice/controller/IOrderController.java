@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.cognizant.orderservice.model.OrderModel;
 
@@ -15,7 +16,7 @@ public interface IOrderController {
     @ApiOperation(value = "test method for server", response = String.class)
     public String testConfigServer();
     public ResponseEntity<Object> getAllOrders();
-    public ResponseEntity<Boolean> addOneOrder();
+    public ResponseEntity<Boolean> addOneOrder(@RequestBody OrderModel orderModel);
     public ResponseEntity<Boolean> acceptOrder(@PathVariable Integer id);
     public ResponseEntity<Boolean> rejectOrder(@PathVariable Integer id);
     public ResponseEntity<List<OrderModel>> getUserOrders(@PathVariable Integer userId);
