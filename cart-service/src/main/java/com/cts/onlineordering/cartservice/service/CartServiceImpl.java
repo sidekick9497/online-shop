@@ -28,6 +28,9 @@ public class CartServiceImpl implements ICartService {
 	@Autowired
 	private RestTemplate restTemplate;
 
+	
+	@Autowired
+	ModelMapper modelMapper;
 	@Bean
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
@@ -40,6 +43,7 @@ public class CartServiceImpl implements ICartService {
 		cart.setUserId(product.getUser_id());
 		cart.setItem_id(product.getItem_id());
 		cart.setItem_quantity(product.getItem_quantity());
+		
 		cart = cartrepo.save(cart);
 		return true;
 		
@@ -47,7 +51,7 @@ public class CartServiceImpl implements ICartService {
 
 	@Override
 	public CartModel getAllProducts(Integer userId) {
-		List<Cart> cartItems = this.cartrepo.findCartsByUserId(userId);
+	List<Cart> cartItems = this.cartrepo.findCartsByUserId(userId);
 		CartModel cartModel = new CartModel();
 		cartModel.setLtemlist(new ArrayList<ItemModel>());
 		cartModel.setUser_id(userId);
@@ -63,11 +67,14 @@ public class CartServiceImpl implements ICartService {
 			 itemModel.setItem_price(productModel.getItem_price());
 			  itemModel.setItem_quantity(cart.getItem_quantity());
 
+
 			  cartModel.getLtemlist().add(itemModel);
 			}
 		return cartModel;
 
 	}
+	
+
 
 	@Override
 	public Boolean deleteProduct(Integer id) {

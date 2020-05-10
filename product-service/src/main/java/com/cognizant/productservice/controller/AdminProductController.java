@@ -3,9 +3,12 @@ package com.cognizant.productservice.controller;
 import com.cognizant.productservice.exceptions.ProductErrorResponse;
 import com.cognizant.productservice.model.ProductModel;
 import com.cognizant.productservice.service.ProductService;
+import com.netflix.ribbon.proxy.annotation.Hystrix;
+
+
 
 import lombok.extern.slf4j.Slf4j;
-
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -64,6 +67,7 @@ public class AdminProductController implements  IAdminProductController {
         return new ResponseEntity<>(true,HttpStatus.OK);
     }
     @GetMapping("/products")
+    @HystrixCommand(fallbackMethod = "reliable")
     public ResponseEntity<List<ProductModel>> getAllProducts()
     {
         log.info("request received for allProducts");

@@ -1,8 +1,15 @@
 package com.cts.onlineordering.cartservice.controller;
 
+import com.cts.onlineordering.cartservice.entity.Cart;
 import com.cts.onlineordering.cartservice.model.CartModel;
 import com.cts.onlineordering.cartservice.model.ProductModel;
 import com.cts.onlineordering.cartservice.service.ICartService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.ribbon.proxy.annotation.Hystrix;
+
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +22,7 @@ public class CartController {
     private ICartService cartService;
 
 
-
+    
     @GetMapping("/cart/testRest")
     public  ResponseEntity<ProductModel> testRestTemplate()
     {
@@ -24,6 +31,7 @@ public class CartController {
 
     }
     @GetMapping("/cart/items/{id}")
+    @HystrixCommand(fallbackMethod = "getfallballCartItems")
     public ResponseEntity<CartModel> getCartItems(@PathVariable Integer id)
     {
 
@@ -52,5 +60,15 @@ public class CartController {
     {
         cartService.deleteProduct(itemId);
         return new ResponseEntity<Boolean>(true,HttpStatus.OK);
+    }
+    
+    
+    public List<Cart> getfallbackCartItems(@PathVariable Integer id){
+    	CartModel cartModel = cartService.getAllProducts(id);
+
+    	return Arrays.asList(new Cart(1,2,1,1));
+
+
+    	
     }
 }
