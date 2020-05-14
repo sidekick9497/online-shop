@@ -40,7 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.csrf().disable() // form security will not conflict
 			.authorizeRequests()
 				//.antMatchers("/user-service/signup").permitAll()
-				.antMatchers("/user-service/login").hasRole("USER")
+				.antMatchers("/user-service/login").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+				
 				// add other antmatcher of plumbing MS
 				
 		.and()
