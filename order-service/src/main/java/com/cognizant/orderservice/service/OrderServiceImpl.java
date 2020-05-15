@@ -109,4 +109,11 @@ public class OrderServiceImpl implements OrderService{
 		return orderModel;
 	}
 
+	@Override
+	public boolean deleteOrder(int orderId) {
+		// TODO Auto-generated method stub
+		orderRepo.deleteById(orderId);
+		return true;
+	}
+
 }

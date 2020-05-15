@@ -13,4 +13,6 @@ public interface OrderService {
 	List<OrderModel> allOrders();
 	
 	OrderModel getOrder(int id);
+	
+	boolean deleteOrder(int orderId);
 }

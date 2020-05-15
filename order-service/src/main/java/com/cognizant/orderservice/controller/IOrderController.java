@@ -15,10 +15,11 @@ import com.cognizant.orderservice.model.OrderModel;
 public interface IOrderController {
     @ApiOperation(value = "test method for server", response = String.class)
     public String testConfigServer();
-    public ResponseEntity<Object> getAllOrders();
+    public ResponseEntity<List<OrderModel>> getAllOrders();
     public ResponseEntity<Boolean> addOneOrder(@RequestBody OrderModel orderModel);
     public ResponseEntity<Boolean> acceptOrder(@PathVariable Integer id);
     public ResponseEntity<Boolean> rejectOrder(@PathVariable Integer id);
     public ResponseEntity<List<OrderModel>> getUserOrders(@PathVariable Integer userId);
     public ResponseEntity<OrderModel> getOneOrder(@PathVariable Integer orderId);
+    public ResponseEntity<Boolean> deleteOrder(@PathVariable Integer id);
 }

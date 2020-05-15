@@ -2,13 +2,26 @@ package com.cognizant.orderservice.entity;
 
 import java.util.Date;
 
-import javax.persistence.*;
-import lombok.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 @ToString
 @Entity
 @Table(name="order_table")
@@ -38,7 +51,7 @@ public class OrderEntity {
 	@Column(name = "item_id")
 	private String  itemId; //store item ids as string
 	
-	@Column(name = "item_qunatity")
+	@Column(name = "item_quantity")
 	private String itemQuantity;
 	
 		
